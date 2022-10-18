@@ -36,12 +36,12 @@ public class Menu {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Menu m = (Menu)o;
-    return (this.getId() == m.getId());
+    Menu menu = (Menu)o;
+    return (this.id==menu.getId() && this.name==menu.getName());
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id);
+    return Objects.hash(id, name);
   }
 }

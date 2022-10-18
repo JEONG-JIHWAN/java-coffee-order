@@ -13,4 +13,10 @@ public class MenuRepository {
     menus.add(menu);
   }
 
+  public Menu findMenu(String id, String name){
+    return menus.stream()
+                .filter(menu -> menu.getId().equals(id)&&menu.getName().equals(name))
+                .findFirst()
+                .orElseThrow(()-> new IllegalStateException("해당 메뉴를 찾을 수 없습니다."));
+  }
 }

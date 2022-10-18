@@ -21,5 +21,10 @@ public class Order {
                      .findFirst()
                      .orElseThrow(()->new IllegalStateException("해당 주문 내역이 없습니다"));
   }
+
+  public int getTotalPrice(){
+    return orderItems.stream().map(orderItem -> orderItem.getPrice())
+                     .reduce(0,Integer::sum);
+  }
   
 }

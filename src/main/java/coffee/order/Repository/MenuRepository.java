@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 import coffee.order.Domain.Menu;
 
 public class MenuRepository {
-  private final Set<Menu> menus = new HashSet<>();
+  private static final Set<Menu> menus = new HashSet<>();
 
   public MenuRepository() {
   }
@@ -19,9 +19,9 @@ public class MenuRepository {
     menus.add(menu);
   }
 
-  public Menu findMenu(String id, String name){
+  public static Menu findMenu(String id){
     return menus.stream()
-                .filter(menu -> menu.getId().equals(id)&&menu.getName().equals(name))
+                .filter(menu -> menu.getId().equals(id))
                 .findFirst()
                 .orElseThrow(()-> new IllegalStateException("해당 메뉴를 찾을 수 없습니다."));
   }

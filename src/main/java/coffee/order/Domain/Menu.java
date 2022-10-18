@@ -37,7 +37,7 @@ public class Menu {
       return false;
     }
     Menu menu = (Menu)o;
-    return (this.id==menu.getId() && this.name==menu.getName());
+    return (this.id==menu.getId());
   }
 
   @Override

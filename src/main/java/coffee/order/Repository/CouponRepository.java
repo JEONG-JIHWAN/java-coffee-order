@@ -1,7 +1,6 @@
 package coffee.order.Repository;
 
 import java.util.HashMap;
-import java.util.Set;
 
 import coffee.order.Domain.Coupon;
 
@@ -12,10 +11,17 @@ public class CouponRepository {
     this.couponBook = couponBook;
   }
 
-  public Coupon findUserCoupon(String phoneNumber){
+  public int addUserCoupon(String phoneNumber, int orderCount){
     if(!couponBook.containsKey(phoneNumber)){
-      throw new IllegalArgumentException("해당 쿠폰이 없습니다");
+      couponBook.put(phoneNumber, new Coupon(orderCount));
     }
-    return couponBook.get(phoneNumber);
+    Coupon userCoupon = couponBook.get(phoneNumber);
+    userCoupon.addCoupon(orderCount);
+    return userCoupon.getCount();
   }
+
+  public void minusUserCoupon(String phoneNumber){
+    couponBook.get(phoneNumber).minusCoupon();
+  }
+
 }

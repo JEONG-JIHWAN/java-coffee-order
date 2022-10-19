@@ -8,6 +8,10 @@ public class Coupon {
     this.count = count;
   }
 
+  public int getCount() {
+    return count;
+  }
+
   public void addCoupon(int orderCount){
     this.count += orderCount;
   }

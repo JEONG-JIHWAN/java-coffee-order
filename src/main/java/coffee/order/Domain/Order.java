@@ -32,9 +32,14 @@ public class Order {
     return orderItems;
   }
 
+  public int findOrderCount(){
+    return orderItems.stream().map(orderItem -> orderItem.getCount())
+        .reduce(0, Integer::sum);
+  }
+
   public int getTotalPrice(){
     return orderItems.stream().map(orderItem -> orderItem.getPrice())
-                     .reduce(0,Integer::sum);
+                     .reduce(0, Integer::sum);
   }
 
 }

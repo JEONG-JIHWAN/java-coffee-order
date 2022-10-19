@@ -4,12 +4,12 @@ public class OrderItem {
   private final Menu menu;
   private final int count;
 
-  private final int couponUsed;
+  private OrderItemStatus couponUsed;
 
   public OrderItem(
       Menu menu,
       int count,
-      int couponUsed //상태로 해결가능..!
+      OrderItemStatus couponUsed
   ) {
     this.menu = menu;
     this.count = count;
@@ -24,8 +24,12 @@ public class OrderItem {
     return count;
   }
 
+  public void freeOrderItem(){
+    this.couponUsed = OrderItemStatus.COUPON;
+  }
+
   public int getPrice(){
-    if (couponUsed==1){
+    if (couponUsed==OrderItemStatus.COUPON){
       return menu.getPrice()*(count-1);
     }
     return menu.getPrice();

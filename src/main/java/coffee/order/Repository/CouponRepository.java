@@ -11,17 +11,11 @@ public class CouponRepository {
     this.couponBook = couponBook;
   }
 
-  public int addUserCoupon(String phoneNumber, int orderCount){
+  public Coupon findUserCoupon(String phoneNumber){
     if(!couponBook.containsKey(phoneNumber)){
-      couponBook.put(phoneNumber, new Coupon(orderCount));
+      couponBook.put(phoneNumber, new Coupon(0));
     }
-    Coupon userCoupon = couponBook.get(phoneNumber);
-    userCoupon.addCoupon(orderCount);
-    return userCoupon.getCount();
-  }
-
-  public void minusUserCoupon(String phoneNumber){
-    couponBook.get(phoneNumber).minusCoupon();
+    return couponBook.get(phoneNumber);
   }
 
 }
